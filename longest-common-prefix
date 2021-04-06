@@ -1,0 +1,15 @@
+var longestCommonPrefix = function(strs) {
+    //if there is an empty string or arg is empty array
+    if (strs.includes('') || strs[0] === undefined) {
+        return ''
+    //if only one string or all strings are the same
+    } else if (strs.length === 1 || [...new Set(strs)].length === 1){
+        return strs[0]
+    } else {
+        let i = 0
+        while ([...new Set(strs.map(str => str.slice(0, i+1)))].length === 1){
+            i++
+        }
+        return strs[0].slice(0, i)
+    }
+}
