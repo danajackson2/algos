@@ -1,0 +1,21 @@
+function stringPerms(str){
+  if (!str || typeof str !== "string"){
+    return "Please enter a string"
+  } else if (str.length < 2 ){
+    return str
+  }
+
+  let final = []
+
+  for (let i=0; i<str.length; i++){
+    let char = str[i]
+    let rem = str.slice(0, i) + str.slice(i+1)
+    for (let perm of stringPerms(rem)){
+      final.push(char+perm)
+    }
+  }
+
+  return final
+} 
+
+//only part way understand this one
