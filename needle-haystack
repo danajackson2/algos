@@ -1,0 +1,9 @@
+var strStr = function(haystack, needle) {
+    if (needle === ''){return 0}
+    for(idx in haystack.split('')){
+        if (haystack.slice(idx, parseInt(idx) + needle.length) === needle){
+            return idx
+        }
+    }
+    return -1
+}
