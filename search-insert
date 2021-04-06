@@ -7,3 +7,18 @@ var searchInsert = function(nums, target) {
         return nums.indexOf(target)
     }
 }
+
+//OR
+//search through one element at a time  until you hit a spot where the current element < target and next element > target, return next element index bc that's where the target would be inserted
+// more handling of edge cases with this one, but did it with just one line at the end, basically if the target will be inserted at the beginning or end of the array
+
+var searchInsert = function(nums, target) {
+    for(let i = 0; i < nums.length; i++){
+        if (nums[i] === target){
+            return i
+        } else if (nums[i] < target && nums[i+1] > target){
+            return i+1
+        }
+    }
+    return target < nums[0] ? 0 : nums.length
+}
