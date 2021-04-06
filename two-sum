@@ -1,0 +1,47 @@
+// var twoSum = function(nums, target) {
+//     let obj = {}
+//     for (i=0; i<nums.length; i++){
+//         let buddy = (target - nums[i]).toString()
+//         obj[nums[i]] = i
+//         if (obj[buddy] && i !== obj[buddy]){
+//             return [obj[buddy], i]
+//         }
+//     }
+// }
+
+var twoSum = function(nums, target) {
+    let obj = {}
+    for (i=0;i<nums.length;i++){
+        obj[nums[i]] = i
+    }
+    for (i=0;i<nums.length;i++){
+        let buddy = (target - nums[i]).toString()
+        if (obj[buddy] && i !== obj[buddy]){
+            return [i, obj[buddy]]
+        }
+    }
+}
+
+// var twoSum = function(nums, target) {
+//     for (let i = 0; i < nums.length; i++){
+//         for (let k = i+1; k < nums.length;  i++){
+//             if (nums[i] + nums[k] === target){
+//                 return [i,k]
+//             }
+//         }
+//     }
+// };
+
+// var twoSum = function(nums, target) {
+//   let obj = {};
+  
+//   for (let i = 0; i < nums.length; i++) {
+//     obj[nums[i]] = i
+//   }
+
+//   for (let i = 0; i < nums.length; i++) {
+//     let complementSum = target - nums[i];
+//     if (obj[complementSum] && i !== obj[complementSum]) return [obj[complementSum], i].sort();
+//   }
+//   return []
+// };
