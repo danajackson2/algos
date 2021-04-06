@@ -1,0 +1,14 @@
+//remove given element in place in memory
+
+var removeElement = function(nums, val) {
+    let counter = 0
+    for(let i = 0; i < nums.length; i++){
+        if (nums[counter] === val){
+            nums.splice(counter, 1)
+            nums.push(val)
+        } else {
+            counter++
+        }
+    }
+    return counter
+}
