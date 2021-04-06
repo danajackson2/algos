@@ -1,0 +1,14 @@
+var getIntersectionNode = function(headA, headB) {
+    let ptrA = headA
+    while (headB) {
+        while (ptrA) {
+            if (headB === ptrA) {
+                return headB
+            }
+            ptrA = ptrA.next
+        }
+        ptrA = headA
+        headB = headB.next
+    }
+    return null
+}
