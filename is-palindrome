@@ -1,0 +1,7 @@
+var isPalindrome = function(x) {
+    let str = x.toString()
+    let mid = Math.ceil(str.length/2)
+    return str.length % 2 === 0 
+    ? str.slice(0, mid) === str.slice(mid).split('').reverse().join('')
+    : str.slice(0, mid) === str.slice(mid-1).split('').reverse().join('')
+}
