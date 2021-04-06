@@ -1,0 +1,5 @@
+var reverse = function(x) {
+    let abs_num = parseInt(x.toString().split('').reverse().join(''))
+    let num = x > 0 ? abs_num : -abs_num
+    return num > Math.pow(-2, 31) && num < Math.pow(2, 31)-1 ? num : 0
+}
