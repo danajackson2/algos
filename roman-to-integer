@@ -1,0 +1,16 @@
+var romanToInt = function(s) {
+    let obj = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
+    let arr = s.split('')
+    let i = 0
+    let ans = 0
+    while (i < arr.length){
+        if (obj[arr[i]] >= obj[arr[i+1]] || i === arr.length-1){
+            ans += obj[arr[i]]   
+            i++
+        } else {
+            ans += (obj[arr[i+1]] - obj[arr[i]])
+            i += 2
+        }
+    }
+    return ans
+}
