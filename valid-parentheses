@@ -1,0 +1,15 @@
+var isValid = function(s) {
+    let stack = ['a']
+    const obj = {')':'(', '}':'{', ']':'['}
+    for(let i=0; i < s.length; i++){
+        if (stack[stack.length-1] === obj[s[i]]){
+            stack.pop()
+        } else {
+            stack.push(s[i])
+        }
+    }
+  return stack[stack.length-1] === 'a'
+}
+
+// first attempt was to check the count of each parentheses type and make sure that for each element in the array, looking backwards, the count of open parentheses >= count of closed parentheses, but that doesn't work with different parentheses types (){}[]
+// used a stack data structure to compare backwards
