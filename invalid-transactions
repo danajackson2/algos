@@ -1,0 +1,36 @@
+//Runtime: 3232 ms, faster than 5.88% of JavaScript online submissions for Invalid Transactions.
+//Memory Usage: 46.5 MB, less than 23.53% of JavaScript online submissions for Invalid Transactions.
+//Not ideal, need to refactor
+
+var invalidTransactions = function(transactions) {
+    let invalid = []
+    
+    transactions.forEach(tr => {
+        if (tr.split(',')[2] > 1000) {
+            invalid.push(tr)
+        } else {
+            let sameNameArr = transactions.filter(tr1 => tr1.split(',')[0] === tr.split(',')[0] && tr1 !== tr)
+            let bads = sameNameArr.filter(i => i.split(',')[3] !== tr.split(',')[3] && Math.abs(i.split(',')[1] - tr.split(',')[1]) < 61)
+            if (bads.length >= 1) {invalid.push(tr)}
+        }
+    })
+    return invalid
+}
+
+//Alternate answer where I created a check function then ran each transaction thru the check function and filtererd. Pretty much the same time complexity and memory.
+//Thought it might be less bc I didn't create a new array to store invalids.
+
+var invalidTransactions = function(transactions) {
+    
+    function isInvalid(tr){
+        if (tr.split(',')[2] > 1000) {
+            return true
+        } else {
+            let sameNameArr = transactions.filter(tr1 => tr1.split(',')[0] === tr.split(',')[0] && tr1 !== tr)
+            let bads = sameNameArr.filter(i => i.split(',')[3] !== tr.split(',')[3] && Math.abs(i.split(',')[1] - tr.split(',')[1]) < 61)
+            return bads.length >= 1
+        }
+    }
+    
+    return transactions.filter(trans => isInvalid(trans))
+}
