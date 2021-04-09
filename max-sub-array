@@ -1,0 +1,23 @@
+//brute force, too slow for large number sets
+
+var maxSubArray = function(nums) {
+    let maxSum = nums[0]
+    for(let i = 0; i < nums.length; i++){
+        for(let j = i+1; j <= nums.length+1; j++){
+            maxSum = Math.max( nums.slice(i, j).reduce((a,b) => a+b), maxSum)
+        }
+    }
+    return maxSum
+}
+
+//optimal
+var maxSubArray = function(nums) {
+    let currSubarray = nums[0]
+    let maxSubarray = nums[0]
+    for(let i = 1; i < nums.length; i++){
+        let num = nums[i]
+        currSubarray = Math.max(num, currSubarray + num)
+        maxSubarray = Math.max(maxSubarray, currSubarray)
+    }
+    return maxSubarray
+}
