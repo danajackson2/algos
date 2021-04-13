@@ -1,0 +1,20 @@
+var majorityElement = function(nums) {
+    //set target as first element
+    //loop thru array and count target with a filter, if count is more than length/2 return it
+    // on next loop if target is same as element skip
+    // once target is new, reset target to that and count as before
+    let target
+    for(const i of nums){
+        if (i === target){
+            continue
+        } else {
+            target = i
+            let count = nums.filter(el => el === target).length
+            if (count > nums.length/2){
+                return i
+            }
+        }
+    }
+}
+
+//not fast!
