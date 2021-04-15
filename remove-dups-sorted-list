@@ -1,0 +1,35 @@
+var deleteDuplicates = function(head) {
+    let p = head //set pointer
+    let q //set placeholder
+    
+    while (p !== null && p.next !== null){      //stay in loop as long as the pointer and the next have value
+        if (p.val === p.next.val){              // if pointer and next are duplicates...
+            p.next = p.next.next                // set pointer's next to nextnext 
+        } else {                                // if pointer and next are not duplicates...
+            p = p.next                          // move pointer to the next node
+        }
+    }
+    
+    return head
+};
+
+
+// Solution from video (https://www.youtube.com/watch?v=U6ZbrYQVYzA)
+// var deleteDuplicates = function(head) {
+//     let pointer = head
+//     let q   
+//     while (pointer !== null && pointer.next !== null){
+//         if (pointer.val === pointer.next.val){
+//             q = pointer.next.next
+//             if (q === null){
+//                 pointer.next = null
+//                 break
+//             }
+//             pointer.next = q
+//         }
+//         if (pointer.val !== pointer.next.val){
+//             pointer = pointer.next
+//         }
+//     }
+// return head
+//}
