@@ -1,0 +1,4 @@
+var mySqrt = function(x) {
+    return Math.sqrt(x).toString().split('.')[0]
+};
+//seems too easy!?
