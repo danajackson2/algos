@@ -1,0 +1,18 @@
+var isLongPressedName = function(name, typed) {
+    let i = 0
+    let j = 0
+    
+    while (i < name.length && j < typed.length){
+        if (typed[j] === name[i]){
+            i++, j++
+        } else if (typed[j] === name[i-1]){
+            j++
+        } else {return false}
+    }
+    
+    if (j < typed.length){
+        return typed.substring(j).split('').every(ltr => ltr === name[i-1])
+    } else {
+        return i === name.length && j === typed.length
+    }
+}
