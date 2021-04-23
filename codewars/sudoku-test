@@ -32,3 +32,28 @@ function doneOrNot(board){
   
   return "Finished!"
 }
+
+//Better answer that does only one loops and checks 3 arr per loop
+
+function doneOrNot(board){
+  
+  // function to check if arr has 1-9
+  function check(arr){
+    return [1,2,3,4,5,6,7,8,9].every(i => arr.includes(i))
+  }
+  
+  // check every column, block and row for i = 0
+  for (let i = 0; i < 9; i++){
+    let column = []
+    let block = []
+    for (let j = 0; j < 9; j++){
+      column.push(board[j][i])
+      block.push(board[Math.floor(i/3) * 3 + Math.floor(j/3)][3*(i%3) + j%3])
+    }
+    if (!check(column) || !check(block) || !check(board[0])){return 'Try again!'}
+    column = []
+    block = []
+  }
+  
+  return "Finished!"
+}
