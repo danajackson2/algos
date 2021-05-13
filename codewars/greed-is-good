@@ -1,0 +1,26 @@
+//create an object with key of number and value of number count
+
+
+function score( dice ) {
+  
+  let obj = {}
+  let total = 0
+  
+  for(const num of dice){
+    obj[num] = obj[num] + 1 || 1
+  }
+
+  for (const key in obj){
+    if (key === '1'){
+      total += Math.floor(obj[key]/3) * 1000
+      total += obj[key] % 3 * 100
+    } else {
+      total += key * Math.floor(obj[key]/3) * 100
+    }
+    if (key === '5'){
+      total += obj[key] % 3 * 50
+    }
+  }
+
+  return total
+}
