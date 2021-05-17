@@ -1,0 +1,56 @@
+function isInteresting(number, awesomePhrases) {
+  
+  // check 0-100
+  if (number < 98){
+    return 0
+  } else if (number === 98 || number === 99){
+    return 1
+  }
+  
+  //Tests for incrementing, decrementing, and palindromic numbers
+  function incrementTest(num){
+    let arr = num.toString().split('')
+    let newArr = parseInt(arr[arr.length-1]) === 0 ? arr.splice(0, arr.length-1).concat('10') : arr
+    for(let i = 0; i < newArr.length-1; i++){
+      if (parseInt(newArr[i+1]) - parseInt(newArr[i]) !== 1) return false
+    }
+    return true
+  }
+  
+  function decrementTest(num){
+     let arr = num.toString().split('')
+    for(let i = 0; i < arr.length-1; i++){
+      if (parseInt(arr[i]) - parseInt(arr[i+1]) !== 1) return false
+    }
+    return true
+  }
+  
+  function palindromeTest(num){
+    let arr = num.toString().split('')
+    for (let i = 0; i < arr.length/2; i++){
+      if (arr[i] !== arr[arr.length-1-i]) return false
+    }
+    return true
+  }
+  
+  // Is this number interesting?
+  function interesting(x){
+    if( parseInt(x.toString().slice(1)) === 0
+      || x.toString().split('').every(i => i === x.toString()[0])
+      || incrementTest(x)
+      || decrementTest(x)
+      || palindromeTest(x)
+      || awesomePhrases.includes(x) ){
+        return true
+      }
+  }
+  
+  // returns 0, 1, or 2 depending on if the number is interesting or it is within two below an interesting number
+  if ( interesting(number) ){
+    return 2
+  } else if ( interesting(number+1) || interesting(number+2) ){
+    return 1
+  } else {
+    return 0
+  }
+}
