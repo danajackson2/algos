@@ -1,0 +1,18 @@
+function topThreeWords(text) {
+// remove all punctuation aside from ' , turn into an array, get rid of empty spaces and items that are only ' , turn all letters to lowercase
+  const wordsArr = text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(' ').filter(i => i !== '' && i !== "'").map(i => i.toLowerCase())
+  let countObj = {}
+// create a count object that counts the number of times a word appears
+  wordsArr.forEach(word => {
+    countObj[word] ? countObj[word] ++ : countObj[word] = 1
+  })
+  let countArr = []
+// turn count object into an array of arrays so it can be sorted. first element in each inner array is letter, second is count
+  for (const i in countObj){
+    countArr.push([i, countObj[i]])
+  }
+// sort count array by second inner array element (word count)
+  countArr.sort((a,b) => a[1] < b[1] ? 1 : -1)
+// return first three array items, only the word
+  return countArr.slice(0, 3).map(i => i[0])
+}
