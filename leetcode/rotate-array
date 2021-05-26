@@ -1,0 +1,25 @@
+// Doesn't change input array, returns new copy
+// shift on line 5 accounts for k that is more than nums.length
+var rotate = function(nums, k) {
+    let ans = []
+    const shift = k % nums.length
+    for(let i = 0; i < nums.length; i++){
+        i + shift < nums.length ? ans[i + shift] = nums[i] : ans[i + shift - nums.length] = nums[i]
+    }
+    return ans
+};
+
+// Altering array in place, O(1) time complexity
+var rotate = function(nums, k) {
+  for(let i = 0; i < k % nums.length; i++){
+      nums.unshift(nums.pop())
+  }
+  return nums
+};
+
+// splice last k numbers off and add to beginning
+var rotate = function(nums, k) {
+  nums.unshift(...nums.splice(nums.length - k % nums.length))
+  return nums
+}
+
