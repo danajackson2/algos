@@ -1,0 +1,7 @@
+var singleNumber = function(nums) {
+    let store = {}
+    for (let i = 0; i < nums.length; i++){
+        store[nums[i]] ? store[nums[i]] ++ : store[nums[i]] = 1
+    }
+    return Object.keys(store).find(num => store[num] === 1)
+};
