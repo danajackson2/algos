@@ -1,0 +1,21 @@
+var containsDuplicate = function(nums) {
+    let testArr = []
+    for (let i = 0; i < nums.length; i++){
+        if (testArr.includes(nums[i])){
+            return true
+        } else {
+            testArr.push(nums[i])
+        }
+    }
+    return false
+};
+
+//takes too long:
+var containsDuplicate = function(nums) {
+    for (let i = 0; i < nums.length; i++){
+      if (nums.slice(0, i).concat(nums.slice(i+1)).includes(nums[i])){
+        return true
+      }
+    }
+    return false
+};
