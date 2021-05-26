@@ -1,0 +1,11 @@
+// Any time there is an increase from one day to next that amount will be added to total
+// Iterate thru and if next is greate than current, add it to total
+// Faster way to do that is add the max of 0 or next-curr because if next is not greater than current it will be a negative number, so it will be less than 0, and not added to total
+
+var maxProfit = function(prices) {
+    let total = 0
+    for (let i = 0; i < prices.length-1; i++){
+        total += Math.max(0, prices[i+1] - prices[i])
+    }
+    return total
+};
