@@ -1,13 +1,13 @@
-// var twoSum = function(nums, target) {
-//     let obj = {}
-//     for (i=0; i<nums.length; i++){
-//         let buddy = (target - nums[i]).toString()
-//         obj[nums[i]] = i
-//         if (obj[buddy] && i !== obj[buddy]){
-//             return [obj[buddy], i]
-//         }
-//     }
-// }
+var twoSum = function(nums, target) {
+    let obj = {}
+    for (let i = 0 ; i < nums.length; i++){
+        let buddy = (target - nums[i]).toString()
+        if (obj[buddy] !== undefined && i !== obj[buddy]){
+            return [obj[buddy], i]
+        }
+        obj[nums[i]] = i
+    }
+}
 
 var twoSum = function(nums, target) {
     let obj = {}
