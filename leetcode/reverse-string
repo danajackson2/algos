@@ -1,0 +1,11 @@
+var reverseString = function(s) {
+    for (let i = 0; i < s.length/2; i++){
+    // ES6 destructuring swap
+        [s[s.length-1-i], s[i]] = [s[i], s[s.length-1-i]]
+    // placeholder swap    
+        // const tmp = s[s.length-1-i]
+        // s[s.length-1-i] = s[i]
+        // s[i] = tmp
+    }
+    return s
+};
