@@ -1,0 +1,25 @@
+// creates new matrix in memory
+
+var rotate = function(matrix) {
+    let newMatrix = []
+    for (let i = 0; i < matrix.length; i++){
+      newMatrix.push([])
+    }
+    let length = matrix.length
+    for (let x = 0; x < matrix.length; x++){
+      for (let y = 0; y < matrix.length; y++){
+        newMatrix[y][length-1-x] = matrix[x][y]
+      }
+    }
+    return newMatrix
+};
+
+// alters existing matrix
+
+var rotate = function(matrix) {
+    for (let i = 0; i < matrix.length; i++){
+        for (let j = 0; j < matrix.length; j++){
+            matrix[matrix.length-1-j].unshift(matrix[i].pop())   
+        }
+    }
+};
