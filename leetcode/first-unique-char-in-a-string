@@ -1,0 +1,9 @@
+var firstUniqChar = function(s) {
+// create empty object
+    let obj = {}
+// str => arr and for each item add count in obj
+    s.split('').forEach(e => obj[e] ? obj[e]++ : obj[e] = 1)
+// get arr of obj keys and find the first one that has a count of 1 (default for .find)
+// get the index of that letter in the str => arr
+    return s.split('').indexOf(Object.keys(obj).find(ltr => obj[ltr] === 1))
+};
