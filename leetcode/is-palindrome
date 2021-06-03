@@ -5,3 +5,14 @@ var isPalindrome = function(x) {
     ? str.slice(0, mid) === str.slice(mid).split('').reverse().join('')
     : str.slice(0, mid) === str.slice(mid-1).split('').reverse().join('')
 }
+
+// ignores punctuation and underscores
+
+var isPalindrome = function(x) {
+    let strArr = x.toLowerCase().match(/[a-z0-9]+/g)
+    let str = strArr === null ? '' : strArr.join('')
+    let mid = Math.ceil(str.length/2)
+    return str.length % 2 === 0 
+    ? str.slice(0, mid) === str.slice(mid).split('').reverse().join('')
+    : str.slice(0, mid) === str.slice(mid-1).split('').reverse().join('')
+}
