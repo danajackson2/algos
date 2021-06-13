@@ -1,0 +1,35 @@
+// feels messy as hell...
+
+var myAtoi = function(s) {
+    if (s === ''){return 0}
+    let noSpaces = s.trim()
+    
+    if (!/\d/.test(noSpaces)){return 0}
+    
+    let pos = true
+    
+    if (noSpaces[0] === '-'){
+        pos = false
+        noSpaces = noSpaces.slice(1)
+    } else if (noSpaces[0] === '+'){
+        noSpaces = noSpaces.slice(1)
+    }
+    
+    if (!noSpaces[0].match(/^[0-9]+$/)){
+      return 0
+    }
+   
+    const endIdx = noSpaces.split('').findIndex(e => !e.match(/^[0-9]+$/))
+
+    let ans = endIdx === -1 ? noSpaces : noSpaces.slice(0, endIdx)
+    
+    ans = pos ? +ans : -ans
+
+    if (ans > Math.pow(2,31)-1){
+      return Math.pow(2,31)-1
+    } else if (ans < -Math.pow(2,31)){
+      return -Math.pow(2,31)
+    } else {
+      return ans
+    }   
+}
