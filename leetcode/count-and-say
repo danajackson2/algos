@@ -1,7 +1,6 @@
 // does this count as recursive?
 
 var countAndSay = function(n) {
-    let times = 1
     let final = 1
 
     function say(num){
@@ -19,10 +18,33 @@ var countAndSay = function(n) {
       return ans
     }
 
-    while (times < n){
+    while (n > 1){
         final = say(final)
-        times++
+        n--
     }
 
     return final.toString()
+}
+
+// better:
+var countAndSay = function(n) {
+    if (n <= 0) return ''
+    let result = '1'
+    
+    while (n > 1){
+        let current = ''
+        for (let i = 0; i < result.length; i++){
+            let count = 1
+            while (result[i] === result[i+1]){
+                count++
+                i++
+            }
+            current = current + count + result[i]
+        }
+        result = current.toString()
+        n--
+    }
+    
+    return result
+    
 };
